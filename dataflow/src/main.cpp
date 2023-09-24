@@ -16,18 +16,29 @@
 
 #include <systemc.h>
 #include "helper_fct.h"
+#include "df_constant.h"
+
 
 int sc_main(int argc, char* argv[]) {
 
+	// DECLARATION
+	sc_fifo<double> const_value_fifo("const_value", 20);
+
+
 	/* Elaboration step */
 	DISPLAY("ELABORATION");
+
+	// Instantiation and port map
+	DF_Constant DF_Constant_inst("DF_Constant_inst", 5.2);
+	            DF_Constant_inst.const_value(const_value_fifo);
+	
 
 
 
 	/* Simulation step */
 	DISPLAY("START SIMULATION");
 
-	sc_start();
+	sc_start(350, SC_MS);
 
 	/* End of Simulation */
 	DISPLAY("END OF SIMULATION");
