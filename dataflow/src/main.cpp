@@ -19,6 +19,7 @@
 #include "df_constant.h"
 #include "df_adder.h"
 #include "df_fork.h"
+#include "df_display.h"
 
 
 int sc_main(int argc, char* argv[]) {
@@ -46,6 +47,10 @@ int sc_main(int argc, char* argv[]) {
 	        DF_Fork_inst.added_value(added_value_fifo);
 			DF_Fork_inst.feedback(feedback_fifo);
 			DF_Fork_inst.result(result_fifo);
+
+	
+	DF_Display DF_Display_inst("DF_Display_inst", 8.2);
+	           DF_Display_inst.result(result_fifo);
 
 
 	/* Simulation step */
